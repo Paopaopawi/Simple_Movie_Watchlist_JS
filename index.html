@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Watchlist</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="auth-body">
+
+    <div class="auth-container">
+        <h2>Welcome Back</h2>
+        <p>Login to manage your movie watchlist.</p>
+        
+        <div id="loginError" class="error-box" style="display: none;"></div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="auth-btn">Login</button>
+        </form>
+
+        <p class="auth-link">No account yet? <a href="signup.html">Sign up now!</a></p>
+    </div>
+
+</body>
+</html>

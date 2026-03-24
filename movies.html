@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browse Movies - Watchlist Pro</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <h2>Watchlist Pro</h2>
+      <ul>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="watchlist.html">My Watchlist</a></li>
+        <li><a href="about-project.html">About Project</a></li>
+        <li><a href="developers.html">Developers</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <section class="movie-list">
+        <h3>Popular Movies</h3>
+       <div class="container">
+        <section class="movie-list">
+            <h3>Popular Movies</h3>
+            <div class="card-grid">
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=400&auto=format&fit=crop" alt="Inception" class="card-img">
+                    <h4>Inception</h4>
+                    <div class="rating">★★★★★</div>
+                    <p class="short-desc">A thief who steals corporate secrets through the use of dream-sharing technology...</p>
+                    <button class="info-btn" data-title="Inception" data-img="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=400&auto=format&fit=crop" data-info="A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.">More Info</button>
+                    <button class="add-btn" data-title="Inception">Add to Watchlist</button>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=400&auto=format&fit=crop" alt="The Matrix" class="card-img">
+                    <h4>The Matrix</h4>
+                    <div class="rating">★★★★☆</div>
+                    <p class="short-desc">A computer hacker learns from mysterious rebels about the true nature of his reality...</p>
+                    <button class="info-btn" data-title="The Matrix" data-img="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=400&auto=format&fit=crop" data-info="Thomas A. Anderson is a man living two lives. By day he is an average computer programmer and by night a hacker known as Neo. Neo has always questioned his reality, but the truth is far beyond his imagination.">More Info</button>
+                    <button class="add-btn" data-title="The Matrix">Add to Watchlist</button>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400&auto=format&fit=crop" alt="Interstellar" class="card-img">
+                    <h4>Interstellar</h4>
+                    <div class="rating">★★★★★</div>
+                    <p class="short-desc">A team of explorers travel through a wormhole in space in an attempt to ensure...</p>
+                    <button class="info-btn" data-title="Interstellar" data-img="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=400&auto=format&fit=crop" data-info="Earth's future has been riddled by disasters, famines, and droughts. There is only one way to ensure mankind's survival: Interstellar travel. A newly discovered wormhole in our solar system allows a team of astronauts to go where no man has gone before.">More Info</button>
+                    <button class="add-btn" data-title="Interstellar">Add to Watchlist</button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modalImg" src="" alt="Movie Poster" class="modal-img">
+            <h2 id="modalTitle">Movie Title</h2>
+            <p id="modalText">Detailed movie info goes here.</p>
+            <button id="modalAddBtn" class="add-btn">Add to Watchlist</button>
+        </div>
+    </div>
+  </body>
+</html>

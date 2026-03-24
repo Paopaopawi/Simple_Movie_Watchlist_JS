@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Watchlist - Watchlist Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav>
+        <h2>Watchlist Pro</h2>
+        <ul>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="watchlist.html">My Watchlist</a></li>
+            <li><a href="about-project.html">About Project</a></li>
+            <li><a href="developers.html">Developers</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="add-movie-section">
+            <h3>Add Custom Movie to Watchlist</h3>
+            <form id="addMovieForm">
+                <input type="text" id="movieTitle" placeholder="Movie Title">
+                <p id="error-msg" style="color: red; display: none;">Title cannot be empty!</p>
+                <button type="submit">Add to Watchlist</button>
+            </form>
+        </section>
+
+        <section class="watchlist-section">
+            <h3>My Watchlist</h3>
+            <table id="watchlistTable">
+                <thead>
+                    <tr>
+                        <th>Movie Title</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="watchlistBody">
+                    </tbody>
+            </table>
+        </section>
+    </div>
+
+</body>
+</html>
