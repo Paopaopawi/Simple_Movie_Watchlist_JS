@@ -1,107 +1,6 @@
-// ==========================================
-// 1. SIGN UP PAGE LOGIC (Saves to Local Storage)
-// ==========================================
-const signupForm = document.getElementById('signupForm');
 
-if (signupForm) {
-    const fullName = document.getElementById('fullName');
-    const signupEmail = document.getElementById('signupEmail');
-    const signupPassword = document.getElementById('signupPassword');
-    const confirmPassword = document.getElementById('confirmPassword');
-    const signupError = document.getElementById('signupError');
 
-    signupForm.addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        signupError.innerHTML = '';
-        signupError.style.display = 'none';
-        let errors = [];
-
-        if (fullName.value.trim() === "") errors.push("Full Name is required.");
-        if (signupEmail.value.trim() === "") errors.push("Email is required.");
-        if (signupPassword.value.trim() === "") errors.push("Password is required.");
-        if (signupPassword.value !== confirmPassword.value) errors.push("Passwords do not match!");
-
-        if (errors.length > 0) {
-            errors.forEach(errorText => {
-                const p = document.createElement('p');
-                p.textContent = "• " + errorText;
-                signupError.appendChild(p);
-            });
-            signupError.style.display = 'block';
-        } else {
-            // --- LOCAL STORAGE: Save User ---
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            
-            // Check if email already exists
-            const userExists = users.some(u => u.email === signupEmail.value);
-            if (userExists) {
-                const p = document.createElement('p');
-                p.textContent = "• Email already registered.";
-                signupError.appendChild(p);
-                signupError.style.display = 'block';
-                return;
-            }
-
-            users.push({
-                name: fullName.value,
-                email: signupEmail.value,
-                password: signupPassword.value // Note: In a real app, never store plain text passwords!
-            });
-            
-            localStorage.setItem('users', JSON.stringify(users));
-            alert("Account created successfully!");
-            window.location.href = "index.html"; // Send to login
-        }
-    });
-}
-
-// ==========================================
-// 2. LOGIN PAGE LOGIC (Reads from Local Storage)
-// ==========================================
-const loginForm = document.getElementById('loginForm');
-
-if (loginForm) {
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const loginError = document.getElementById('loginError');
-
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        loginError.innerHTML = '';
-        loginError.style.display = 'none';
-
-        const email = emailInput.value.trim();
-        const password = passwordInput.value.trim();
-
-        if (email === "" || password === "") {
-            const errorMsg = document.createElement('p');
-            errorMsg.textContent = "Please fill in both email and password.";
-            loginError.appendChild(errorMsg);
-            loginError.style.display = 'block';
-        } else {
-            // --- LOCAL STORAGE: Verify User ---
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            const validUser = users.find(u => u.email === email && u.password === password);
-
-            if (validUser) {
-                // Save current logged in user
-                localStorage.setItem('currentUser', JSON.stringify(validUser));
-                window.location.href = "movies.html";
-            } else {
-                const errorMsg = document.createElement('p');
-                errorMsg.textContent = "Invalid email or password.";
-                loginError.appendChild(errorMsg);
-                loginError.style.display = 'block';
-            }
-        }
-    });
-}
-
-// ==========================================
-// 3. MOVIE LIST & WATCHLIST LOGIC (Split Pages)
-// ==========================================
-
-// Global Watchlist Array from Local Storage
+// MOVIE LIST & WATCHLIST LOGIC
 let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
 
 const modal = document.getElementById('movieModal');
@@ -113,9 +12,9 @@ if (modal) {
     const modalAddBtn = document.getElementById('modalAddBtn');
     const closeBtn = document.querySelector('.close-btn');
 
-    // 1. "Add to Watchlist" from static cards on the main page
+    // ADD TO WATCHLIST
     document.querySelectorAll('.add-btn').forEach(button => {
-        // Only target buttons on the cards, not the one in the modal yet
+        
         if(button.id !== "modalAddBtn") {
             button.addEventListener('click', function() {
                 const title = this.getAttribute('data-title');
@@ -124,7 +23,7 @@ if (modal) {
         }
     });
 
-    // 2. Open Modal Logic (Populates Image, Title, and Description)
+    // Open Modal Logic
     document.querySelectorAll('.info-btn').forEach(button => {
         button.addEventListener('click', function() {
             const title = this.getAttribute('data-title');
@@ -144,14 +43,14 @@ if (modal) {
         });
     });
 
-    // 3. "Add to Watchlist" from INSIDE the Modal
+    // "Add to Watchlist" 
     modalAddBtn.addEventListener('click', function() {
         const title = this.getAttribute('data-title');
         addToWatchlist(title);
         modal.style.display = "none"; // Optionally close modal after adding
     });
 
-    // 4. Helper function to handle adding and saving
+    // Helper function to handle adding and saving
     function addToWatchlist(title) {
         if (!watchlist.some(m => m.title === title)) {
             watchlist.push({ title: title, status: "Not Yet" });
@@ -162,14 +61,14 @@ if (modal) {
         }
     }
 
-    // 5. Close Modal Events
+    //  Close Modal Events
     closeBtn.addEventListener('click', function() { modal.style.display = "none"; });
     window.addEventListener('click', function(event) {
         if (event.target == modal) modal.style.display = "none";
     });
 } 
 
-// --- B. WATCHLIST.HTML LOGIC (Form & Table) ---
+//  WATCHLIST.HTML LOGIC 
 const addMovieForm = document.getElementById('addMovieForm');
 
 if (addMovieForm) {
